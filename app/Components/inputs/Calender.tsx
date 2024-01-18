@@ -17,16 +17,16 @@ const Calender:React.FC<CalenderProps> = ({
     disabledDates
 }) => {
     return ( 
-        <DateRange rangeColors={["#262626"]}
+        <DateRange
          ranges={[value]}
          date={new Date()} 
          onChange={onChange}
          direction="vertical"
          showDateDisplay={false}
          minDate={new Date()}
-         disabledDates={disabledDates} >
-
-        </DateRange>
+         disabledDates={disabledDates} 
+         rangeColors={["#262626"]} 
+         />
      );
 }
  

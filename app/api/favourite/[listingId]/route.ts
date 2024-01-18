@@ -16,7 +16,7 @@ export async function POST(
     const currentUser = await getCurrerntUser();
 
     if(!currentUser){
-        return NextResponse.error;
+        return NextResponse.error();
     }
 
     const {listingId} = params;

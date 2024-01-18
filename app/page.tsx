@@ -3,16 +3,16 @@ import Container from './Components/Container';
 import EmptyState from './Components/EmptyState';
 import ListingCard from './Components/listing/ListingCard';
 import getCurrerntUser from './actions/getCurrentUser';
-import getListings, { IListingsParams } from './actions/getListings';
+import getListings, { IListingsParams } from '@/app/actions/getListings';
 
 interface HomeProps{
   searchParams: IListingsParams;
 }
+export const dynamic = 'force-dynamic';
 
 const Home= async({searchParams}: HomeProps)=> {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrerntUser();
-  const isEmpty = true;
    if(listings.length === 0){
     return(
       <ClientOnly>
@@ -33,15 +33,14 @@ const Home= async({searchParams}: HomeProps)=> {
          xl:grid-cols-5
          2xl:grid-cols-6'
          >
-          {listings.map((listing:any)=>{
-            console.log(listing);
-            return(
+          {listings.map((listing:any)=>(
               <ListingCard
                currentUser={currentUser}
                key={listing.id}
-               data={listing} />
-            )
-          })}
+               data={listing} 
+               />
+            
+          ))}
 
         </div>
       </Container>
